@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKINA TSUTSUMI - Portfolio</title>
-    <meta name="description" content="Fashion Designer specializing in functional and activewear">
+    <title>AKINA TSUTSUMI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,7 +19,7 @@
         }
 
         body {
-            font-family: Courier, 'Courier New', monospace;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #ffffff;
             color: rgba(0, 0, 0, 0.85);
             line-height: 1.6;
@@ -49,8 +51,8 @@
         /* 首页封面 */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(200, 200, 200, 0.3), rgba(150, 150, 150, 0.3)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23c0c0c0" width="1200" height="800"/><text x="600" y="400" font-size="48" fill="%23808080" text-anchor="middle">滑雪运动背景图</text></svg>');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        #2c3e50;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -69,11 +71,11 @@
         }
 
         .hero h1 {
-            font-family: 'Courier New', monospace;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 1.7rem;
-            font-weight: 500;
+            font-weight: 400;
             margin-bottom: 3rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .hero-text {
@@ -113,6 +115,25 @@
             font-weight: 300;
         }
 
+        .hero-about-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-left: 2rem;
+            padding: 0.5rem 1.5rem;
+            border: 1.5px solid white;
+            border-radius: 25px;
+            transition: all 0.3s;
+            vertical-align: middle;
+        }
+
+        .hero-about-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
         .about-link {
             display: inline-block;
             color: white;
@@ -120,8 +141,10 @@
             padding: 0.8rem 2rem;
             border: 2px solid white;
             border-radius: 50px;
-            margin-top: 2rem;
             transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: none;
         }
 
         .about-link:hover {
@@ -140,11 +163,11 @@
         }
 
         .main-page h1 {
-            font-family: 'Courier New', monospace;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 3rem;
             margin-bottom: 1rem;
-            letter-spacing: 3px;
-            font-weight: 400;
+            letter-spacing: 2px;
+            font-weight: 300;
         }
 
         .main-page .subtitle {
@@ -229,12 +252,11 @@
         }
 
         .about-sidebar {
-            background: linear-gradient(rgba(150, 180, 200, 0.3), rgba(100, 130, 150, 0.3)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800"><rect fill="%23a8c8d8" width="400" height="800"/><text x="200" y="400" font-size="24" fill="%23fff" text-anchor="middle">运动图片</text></svg>');
-            background-size: cover;
+            background: #34495e;
             height: 800px;
             position: sticky;
             top: 5rem;
+            border-radius: 8px;
         }
 
         .about-content {
@@ -245,7 +267,7 @@
             font-size: 3rem;
             margin-bottom: 2rem;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .about-content .intro {
@@ -339,13 +361,13 @@
         }
 
         .project-nav li {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .project-nav a {
             color: rgba(0, 0, 0, 0.6);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             line-height: 1.6;
             transition: all 0.3s;
             display: block;
@@ -356,15 +378,36 @@
             opacity: 0.5;
         }
 
-        .project-nav .red {
-            color: #ff0000;
+        .project-nav .category {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.85);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-nav .subcategory {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.75);
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+            padding-left: 0.5rem;
+        }
+
+        .project-nav .indent {
+            padding-left: 1rem;
+        }
+
+        .project-nav .double-indent {
+            padding-left: 1.5rem;
         }
 
         .project-content h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .project-content .subtitle {
@@ -398,13 +441,98 @@
         .project-content .image-placeholder {
             width: 100%;
             height: 500px;
-            background: #f0f0f0;
+            background: #ecf0f1;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
+            color: #95a5a6;
             margin: 2rem 0;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            margin: 2rem 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf-download {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.8rem 2rem;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .pdf-download:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+
+        /* 滚动动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content,
+        .hero-bottom {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-name {
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* 鼠标悬停效果增强 */
+        nav a,
+        .about-link,
+        .main-page .links a,
+        .project-nav a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::after,
+        .main-page .links a::after,
+        .project-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after,
+        .main-page .links a:hover::after,
+        .project-nav a:hover::after {
+            width: 100%;
         }
 
         /* 响应式 */
@@ -427,6 +555,29 @@
 
             .hero-text {
                 font-size: 1rem;
+            }
+
+            .hero-content {
+                width: 320px;
+                height: 320px;
+            }
+
+            .hero-name {
+                left: 2rem;
+                font-size: 1.3rem;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .hero-about-link {
+                margin-left: 0;
+            }
+
+            .hero-bottom {
+                left: 2rem;
+                right: 2rem;
             }
 
             .main-page h1 {
@@ -456,14 +607,16 @@
     <!-- 首页封面 -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>I ride through snow, climb sheer rock, chase waves, dive into the deep, and take the road on two wheels. As a sportswear designer who lives for the thrill of movement, I design from the inside out — driven by a customer-first, innovation-led approach that turns function into future.</h1>
-            <a href="#about" class="about-link">ABOUT ME</a>
+            <img src="https://raw.githubusercontent.com/baomingnai-collab/portfolio-images/main/Screenshot-0007-08-16-at-22.58-copy.jpg?v=1" alt="Skiing Action" class="hero-image" crossorigin="anonymous">
         </div>
         <div class="hero-bottom">
             <h2>CHANGE PEOPLE LIVE AROUND BODY</h2>
             <p>DESIGN FROM NEEDS — FOCUSING ON WHAT USERS REQUIRE,<br>WHAT THEY CAN USE, AND THE CONVENIENCE THEY SEEK IN LIFE</p>
         </div>
-        <div class="hero-name">AKINA TSUTSUMI</div>
+        <div class="hero-name">
+            AKINA TSUTSUMI
+            <a href="#about" class="hero-about-link">ABOUT ME</a>
+        </div>
     </section>
 
     <!-- 主页 -->
@@ -572,37 +725,113 @@
             <div class="project-nav">
                 <h2>PROJECT</h2>
                 <ul>
-                    <li><a href="#" class="red">MA RCA PROJECT</a></li>
-                    <li><a href="#">(CONCEPT & INNOVATION PROJECT FOR WINTER SPORTS)</a></li>
-                    <li><a href="#">01.BASE LAYER + PROTECTION INNOVATION</a></li>
-                    <li><a href="#">02.SHOES PROJECT</a></li>
-                    <li><a href="#">GRAND CHALLENGE-COLLABORATION PROJECT</a></li>
-                    <li><a href="#" class="red">BA LCF PROJECT</a></li>
-                    <li><a href="#">FINAL YEAR PROJECT</a></li>
-                    <li><a href="#">SUSTAINABLE FUNCTIONAL FASHION DESIGN PROJECT</a></li>
-                    <li><a href="#">YEAR 2 PROJECT</a></li>
-                    <li><a href="#" class="red">IFF x RCA PROJECT</a></li>
-                    <li><a href="#">(Cross-Disciplinary Collaboration Project on Scent & Narrative Design)</a></li>
+                    <li><a href="#project-content" class="category">PROJECT CONTENT</a></li>
+                    
+                    <li><a href="#ma-rca" class="category">MA RCA PROJECT</a></li>
+                    <li><a href="#base-layer" class="indent">* 01.BASE LAYER + PROTECTION INNOVATION</a></li>
+                    <li><a href="#shoes" class="indent">* 02.SHOES PROJECT</a></li>
+                    
+                    <li><a href="#ba-lcf" class="category">BA LCF PROJECT</a></li>
+                    <li><a href="#final-year" class="indent">* → 01.FINAL YEAR PROJECT</a></li>
+                    <li><a href="#portfolio" class="double-indent">* PORTFOLIO</a></li>
+                    <li><a href="#lookbook" class="double-indent">* LOOK BOOK</a></li>
+                    <li><a href="#year2" class="indent">* → 02.YEAR 2 PROJECT</a></li>
+                    
+                    <li><a href="#iff-rca" class="category">IFF x RCA PROJECT</a></li>
+                    
+                    <li><a href="#grand-challenge" class="category">GRAND CHALLENGE-COLLABORATION</a></li>
                 </ul>
             </div>
             <div class="project-content">
-                <h1>MA RCA PROJECT</h1>
-                <p class="subtitle">(CONCEPT & INNOVATION PROJECT FOR WINTER SPORTS)</p>
+                <h1 id="project-content">PROJECT CONTENT</h1>
+                <p class="subtitle">OVERVIEW OF ALL DESIGN WORK & INNOVATION</p>
 
-                <h2>01.BASE LAYER + PROTECTION INNOVATION</h2>
-                <h3>(PATENT PENDING PROJECT)</h3>
+                <h1 id="ma-rca" style="margin-top: 4rem;">MA RCA PROJECT</h1>
+                <p class="subtitle">(CONCEPT & INNOVATION PROJECT FOR WINTER SPORTS)</p>
+                
+                <h2 id="base-layer">01.BASE LAYER + PROTECTION INNOVATION</h2>
+                <h4>(PATENT PENDING PROJECT)</h4>
                 
                 <p>This project introduces a new category of winter sportswear: a technical baselayer engineered for mobility, adaptability, and comfort. Designed in response to the physical demands of winter sports and the inefficiency of traditional layering, it integrates thermal regulation, sweat management, and soft-impact protection into a single, seamless knitted garment.</p>
 
                 <p>Using advanced digital knitting technology (Shima Seiki), the garment embeds anatomically mapped zones of breathability, support, and structural support—each responding to the body's physiological needs during intense motion. By unifying these functions within one textile system, it reduces bulk while enhancing performance for both athletes and travellers.</p>
 
-                <p>A key innovation lies in customizable protective zones. Lightweight containers are strategically placed at high-impact areas such as the spine, shoulders, and elbows. Users can inject a soft silicone material that hardens in 20 minutes, forming a personalised protective shell that conforms to the wearer's unique contours. This participatory approach empowers athletes to engineer their own gear, merging function with individual agency.</p>
+                <p>A key innovation lies in customizable protective zones. Lightweight containers are strategically placed at high-impact areas such as the spine, shoulders, and elbows. Users can inject a soft silicone material that hardens in 20 minutes, forming a personalised protective shell that conforms to the wearer's unique contours.</p>
 
-                <p>Material choices were informed by research into the Comfort Properties of Fabric for Winter Sportswear, mapping fibre content and knit structure against insulation, elasticity, and moisture control. Functional yarns were selected for targeted performance—such as wicking fibres at sweat zones, insulating yarns at cold-exposed areas, and elastic fibres for freedom of movement.</p>
+                <div style="background: #000; color: white; padding: 2rem; border-radius: 8px; text-align: center; margin: 2rem 0;">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📄 PORTFOLIO COMING SOON</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Design process & technical documentation will be displayed here</p>
+                </div>
 
-                <p>Rather than relying on multiple garments to achieve warmth, protection, and moisture balance, this baselayer consolidates them into a singular performance tool. It proposes a modular, intelligent textile system that adapts to the evolving needs of the body in motion, reimagining the future of winter sportswear as lighter, smarter, and more user-driven.</p>
+                <h2 id="shoes">02.SHOES PROJECT</h2>
+                <h4>(CORDWAINERS FOOTWEAR AWARDS 2025 FINALIST)</h4>
+                
+                <p>Building on the baselayer innovation, this footwear project extends the same philosophy of adaptable protection and user-centered design into winter sports footwear. The concept explores modular cushioning systems and anatomical fit technologies that respond to the varied demands of snow sports environments.</p>
 
-                <div class="image-placeholder">项目图片区域</div>
+                <p>The design integrates lightweight materials with strategic reinforcement zones, allowing athletes to customize support levels based on their discipline—whether alpine skiing, snowboarding, or backcountry exploration. The project was recognized as a finalist for The Stuart Weitzman Award for Best MA at the Cordwainers Footwear Awards 2025.</p>
+
+                <div class="image-placeholder" style="height: 400px; background: #bdc3c7;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #7f8c8d;">FOOTWEAR INNOVATION</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #95a5a6;">Modular Protection & Adaptive Fit</p>
+                    </div>
+                </div>
+
+                <h1 id="ba-lcf" style="margin-top: 4rem;">BA LCF PROJECT</h1>
+                
+                <h2 id="final-year">01.FINAL YEAR PROJECT</h2>
+                <p>Final year collection exploring sustainable functional fashion design with focus on technical textiles and performance wear. This collection represents the culmination of three years of study, combining advanced garment construction techniques with innovative material research.</p>
+                
+                <h3 id="portfolio">PORTFOLIO</h3>
+                <p>Comprehensive documentation of the design development process, from initial concept sketches to final collection. Includes technical drawings, fabric research, and construction details.</p>
+
+                <div class="image-placeholder" style="height: 450px; background: #d5dbdb;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #7f8c8d;">DESIGN PORTFOLIO</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #95a5a6;">Development Process & Technical Documentation</p>
+                    </div>
+                </div>
+                
+                <h3 id="lookbook">LOOK BOOK</h3>
+                <p>Visual documentation of the final collection showcasing the integration of aesthetics and functionality through professional photography and styling.</p>
+
+                <div class="image-placeholder" style="height: 450px; background: #aeb6bf;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #7f8c8d;">LOOK BOOK</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #95a5a6;">Final Collection Visual Presentation</p>
+                    </div>
+                </div>
+
+                <h2 id="year2">02.YEAR 2 PROJECT</h2>
+                <p>Second year explorations in garment construction and material innovation. Focus on developing technical skills in pattern cutting, draping, and textile manipulation while exploring sustainable design methodologies.</p>
+
+                <div class="image-placeholder" style="height: 400px; background: #99a3a4;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #7f8c8d;">YEAR 2 EXPLORATION</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #95a5a6;">Material Innovation & Construction Techniques</p>
+                    </div>
+                </div>
+
+                <h1 id="iff-rca" style="margin-top: 4rem;">IFF x RCA PROJECT</h1>
+                <h4>(Cross-Disciplinary Collaboration Project on Scent & Narrative Design)</h4>
+                <p>A collaborative exploration between fashion design and olfactory experience, investigating how scent can enhance the narrative of wearable design. This project bridges the gap between sensory experiences, exploring how fragrance and fashion can work together to create immersive storytelling.</p>
+
+                <div class="image-placeholder" style="height: 400px; background: #85929e;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #7f8c8d;">SCENT & FASHION COLLABORATION</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #95a5a6;">Multi-Sensory Design Experience</p>
+                    </div>
+                </div>
+
+                <h1 id="grand-challenge" style="margin-top: 4rem;">GRAND CHALLENGE - COLLABORATION</h1>
+                <p>Multi-disciplinary project addressing global challenges through innovative design thinking and collaborative problem-solving. Working across different design disciplines to develop solutions for complex environmental and social issues.</p>
+
+                <div class="image-placeholder" style="height: 400px; background: #717d7e;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #ecf0f1;">COLLABORATIVE INNOVATION</p>
+                        <p style="font-size: 0.8rem; opacity: 0.8; color: #bdc3c7;">Cross-Disciplinary Problem Solving</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
