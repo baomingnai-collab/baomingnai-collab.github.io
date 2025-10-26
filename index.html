@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKINA TSUTSUMI - Portfolio</title>
+    <meta name="description" content="Fashion Designer specializing in functional and activewear">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Courier, 'Courier New', monospace;
+            background: #ffffff;
+            color: rgba(0, 0, 0, 0.85);
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.5;
+        }
+
+        /* 首页封面 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(200, 200, 200, 0.3), rgba(150, 150, 150, 0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23c0c0c0" width="1200" height="800"/><text x="600" y="400" font-size="48" fill="%23808080" text-anchor="middle">滑雪运动背景图</text></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: right;
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 8rem;
+            left: 5rem;
+            text-align: left;
+        }
+
+        .hero-bottom h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-bottom p {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        .hero-name {
+            position: absolute;
+            bottom: 3rem;
+            left: 5rem;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .about-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .about-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 主页面 */
+        .main-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5%;
+            background: #fafafa;
+        }
+
+        .main-page h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        .main-page .subtitle {
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .main-page .tagline {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        .main-page .links {
+            margin-top: 2rem;
+        }
+
+        .main-page .links a {
+            display: block;
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: underline;
+            margin: 1rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .main-page .links a:hover {
+            opacity: 0.5;
+        }
+
+        .main-page .description {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            font-size: 0.95rem;
+            line-height: 2;
+            letter-spacing: 1px;
+            color: rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+        }
+
+        .main-page .location {
+            margin-top: 4rem;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .main-page .social {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .main-page .social a {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .main-page .social a:hover {
+            opacity: 0.5;
+        }
+
+        /* About页面 */
+        .about-page {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 5rem;
+        }
+
+        .about-sidebar {
+            background: linear-gradient(rgba(150, 180, 200, 0.3), rgba(100, 130, 150, 0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800"><rect fill="%23a8c8d8" width="400" height="800"/><text x="200" y="400" font-size="24" fill="%23fff" text-anchor="middle">运动图片</text></svg>');
+            background-size: cover;
+            height: 800px;
+            position: sticky;
+            top: 5rem;
+        }
+
+        .about-content {
+            padding-top: 2rem;
+        }
+
+        .about-content h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .about-content .intro {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 3rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .about-content h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 2rem;
+        }
+
+        .about-content h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .about-content h3 {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .about-content h4 {
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .about-content p,
+        .about-content ul {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-content ul li {
+            margin: 0.5rem 0;
+        }
+
+        .about-content .date {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Project页面 */
+        .project-page {
+            min-height: 100vh;
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .project-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 5rem;
+        }
+
+        .project-nav {
+            position: sticky;
+            top: 5rem;
+            height: fit-content;
+        }
+
+        .project-nav h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .project-nav ul {
+            list-style: none;
+        }
+
+        .project-nav li {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-nav a {
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .project-nav a:hover {
+            padding-left: 0.5rem;
+            opacity: 0.5;
+        }
+
+        .project-nav .red {
+            color: #ff0000;
+        }
+
+        .project-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .project-content .subtitle {
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .project-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .project-content h3 {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.65);
+            margin-bottom: 1rem;
+        }
+
+        .project-content .image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .about-container,
+            .project-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-sidebar {
+                height: 300px;
+                position: relative;
+            }
+
+            .project-nav {
+                position: relative;
+                top: 0;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+            }
+
+            .main-page h1 {
+                font-size: 2rem;
+            }
+
+            .main-page .tagline {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                padding: 1rem;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#main">MAIN</a>
+        <a href="#about">ABOUT</a>
+        <a href="#project">PROJECT</a>
+    </nav>
+
+    <!-- 首页封面 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>I ride through snow, climb sheer rock, chase waves, dive into the deep, and take the road on two wheels. As a sportswear designer who lives for the thrill of movement, I design from the inside out — driven by a customer-first, innovation-led approach that turns function into future.</h1>
+            <a href="#about" class="about-link">ABOUT ME</a>
+        </div>
+        <div class="hero-bottom">
+            <h2>CHANGE PEOPLE LIVE AROUND BODY</h2>
+            <p>DESIGN FROM NEEDS — FOCUSING ON WHAT USERS REQUIRE,<br>WHAT THEY CAN USE, AND THE CONVENIENCE THEY SEEK IN LIFE</p>
+        </div>
+        <div class="hero-name">AKINA TSUTSUMI</div>
+    </section>
+
+    <!-- 主页 -->
+    <section id="main" class="main-page">
+        <div>
+            <h1>AKINA TSUTSUMI</h1>
+            <p class="subtitle">(FASHION DESIGNER/INNOVATOR)</p>
+            
+            <p style="margin: 2rem 0; font-size: 0.9rem; color: rgba(0,0,0,0.6);">with</p>
+            
+            <h2 class="tagline">FUNCTION SHAPE BY STORY<br>WORN BY MOTION</h2>
+            
+            <div class="links">
+                <a href="#about">[CV]</a>
+                <a href="#project">[PROJECT]</a>
+                <a href="#awards">[CORDWAINERS FOOTWEAR AWARDS 2025 — BEST MA (FINALIST)]</a>
+            </div>
+
+            <p class="description">
+                DESIGN FROM NEEDS — FOCUSING ON WHAT USERS REQUIRE, WHAT THEY CAN USE, AND THE CONVENIENCE THEY SEEK IN LIFE.<br><br>
+                AS BOTH DESIGNER AND ATHLETE, I APPROACH FROM AN INSIDER PERSPECTIVE — COMBINING INNOVATION WITH EMPATHY, AND PLACING THE USER AT THE HEART OF DESIGN.
+            </p>
+
+            <p class="location">BASE TOKYO - JP / LONDON - UK</p>
+
+            <div class="social">
+                <a href="#">🏠</a>
+                <a href="#">💼</a>
+                <a href="#">📷</a>
+                <a href="#">✉️</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About ME 页面 -->
+    <section id="about" class="about-page">
+        <div class="about-container">
+            <div class="about-sidebar"></div>
+            <div class="about-content">
+                <h1>About ME</h1>
+                <p class="intro">
+                    FASHION DESIGNER SPECIALISING IN FUNCTIONAL AND ACTIVEWEAR<br>
+                    SEEKING DESIGN OR DEVELOPMENT ROLES WITH LEADING SPORTS BRANDS<br>
+                    COMBINING TECHNICAL EXPERTISE WITH A PASSION FOR CONCEPT AND INNOVATION
+                </p>
+
+                <h2>EDUCATION</h2>
+                <h4>MA DEGREE</h4>
+                <p class="date">ROYAL COLLEGE OF ART MA FASHION</p>
+                <h4>BA DEGREE</h4>
+                <p class="date">LONDON COLLEGE OF FASHION BA WOMENSWEAR</p>
+
+                <h2>TECHNICAL SKILL</h2>
+                <h3>LANGUAGE</h3>
+                <p>JAPANESE (NATIVE) / CHINESE (NATIVE) / ENGLISH (ADVANCE)</p>
+                
+                <h3>HARD SKILL</h3>
+                <p>PATTERN CUTTING / DRAPING / SAMPLING / SEWING /<br>
+                TECHNICAL SPEC SHEET / FLAT DRAWING / KNITTING</p>
+                
+                <h3>DESIGN&DIGITAL TOOLS</h3>
+                <ul>
+                    <li>- Adobe Creative Suite: Illustrator/Photoshop/InDesign/Premiere Pro</li>
+                    <li>- 3D & CAD : CLO3D/Rhino/Cinema 4D/Blender/Reaper</li>
+                    <li>- Office & Documentation: Microsoft Office (Word/PowerPoint/Excel)</li>
+                    <li>- E-commerce: Shopify</li>
+                </ul>
+
+                <h2>INDUSTRY WORK EXPERIENCE</h2>
+                <h4>DINGYUNZHANG</h4>
+                <p class="date">(CHINA-SHANGHAI) Design Assistant<br>SEP2023 - MAR2024</p>
+                
+                <h4>NO NAME</h4>
+                <p class="date">(CHINA-SHANGHAI) Design Assistant<br>JUL2023 - SEP2023</p>
+                
+                <h4>POSTER GIRL</h4>
+                <p class="date">(UNITED KINGDOM-LONDON) Design Internship<br>APL2022 - AUG2022</p>
+                
+                <h4>SEEING Co.,Ltd</h4>
+                <p class="date">(JAPAN-TOKYO) Design Internship<br>APL 2022 - AUG 2022</p>
+
+                <h2>RETAIL WORK & OTHER EXPERIENCE</h2>
+                <h4>Dr.Martens SEIBU SOGO</h4>
+                <p class="date">(JAPAN-TOKYO) Sales Assistant<br>NOV2020 - DEC2020</p>
+                
+                <h4>Baroque Japan Limited HENGLONG</h4>
+                <p class="date">(CHINA-TIANJIN) Sales Assistant<br>APL2019 - NOV2020</p>
+
+                <h2>MEDIA</h2>
+                <p><strong>i-D FASHION</strong><br>FEATURED BY I-D IN RCA MA FASHION CLASS</p>
+                <p><strong>O2 WEEKEND</strong><br>RCA X IFF PERFUME COLLAB PROJECT REPORTED</p>
+                <p><strong>FASHION UNITED/HYPEBEAST/SHOW STUDIO</strong><br>PUBLISHED AND REPORTED RUNWAY</p>
+
+                <h2>AWARDS</h2>
+                <p>Real Leather. Stay Different (2022)</p>
+                <p>The Rapid Slow Project (2023)</p>
+                <p><strong>Shima Seiki (2025)</strong><br>DIGITAL KNIT DESIGN PROJECT</p>
+                <p><strong>Cordwainers Footwear Awards (2025)</strong><br>THE STUART WEITZMAN AWARD FOR THE BEST MA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 页面 -->
+    <section id="project" class="project-page">
+        <div class="project-container">
+            <div class="project-nav">
+                <h2>PROJECT</h2>
+                <ul>
+                    <li><a href="#" class="red">MA RCA PROJECT</a></li>
+                    <li><a href="#">(CONCEPT & INNOVATION PROJECT FOR WINTER SPORTS)</a></li>
+                    <li><a href="#">01.BASE LAYER + PROTECTION INNOVATION</a></li>
+                    <li><a href="#">02.SHOES PROJECT</a></li>
+                    <li><a href="#">GRAND CHALLENGE-COLLABORATION PROJECT</a></li>
+                    <li><a href="#" class="red">BA LCF PROJECT</a></li>
+                    <li><a href="#">FINAL YEAR PROJECT</a></li>
+                    <li><a href="#">SUSTAINABLE FUNCTIONAL FASHION DESIGN PROJECT</a></li>
+                    <li><a href="#">YEAR 2 PROJECT</a></li>
+                    <li><a href="#" class="red">IFF x RCA PROJECT</a></li>
+                    <li><a href="#">(Cross-Disciplinary Collaboration Project on Scent & Narrative Design)</a></li>
+                </ul>
+            </div>
+            <div class="project-content">
+                <h1>MA RCA PROJECT</h1>
+                <p class="subtitle">(CONCEPT & INNOVATION PROJECT FOR WINTER SPORTS)</p>
+
+                <h2>01.BASE LAYER + PROTECTION INNOVATION</h2>
+                <h3>(PATENT PENDING PROJECT)</h3>
+                
+                <p>This project introduces a new category of winter sportswear: a technical baselayer engineered for mobility, adaptability, and comfort. Designed in response to the physical demands of winter sports and the inefficiency of traditional layering, it integrates thermal regulation, sweat management, and soft-impact protection into a single, seamless knitted garment.</p>
+
+                <p>Using advanced digital knitting technology (Shima Seiki), the garment embeds anatomically mapped zones of breathability, support, and structural support—each responding to the body's physiological needs during intense motion. By unifying these functions within one textile system, it reduces bulk while enhancing performance for both athletes and travellers.</p>
+
+                <p>A key innovation lies in customizable protective zones. Lightweight containers are strategically placed at high-impact areas such as the spine, shoulders, and elbows. Users can inject a soft silicone material that hardens in 20 minutes, forming a personalised protective shell that conforms to the wearer's unique contours. This participatory approach empowers athletes to engineer their own gear, merging function with individual agency.</p>
+
+                <p>Material choices were informed by research into the Comfort Properties of Fabric for Winter Sportswear, mapping fibre content and knit structure against insulation, elasticity, and moisture control. Functional yarns were selected for targeted performance—such as wicking fibres at sweat zones, insulating yarns at cold-exposed areas, and elastic fibres for freedom of movement.</p>
+
+                <p>Rather than relying on multiple garments to achieve warmth, protection, and moisture balance, this baselayer consolidates them into a singular performance tool. It proposes a modular, intelligent textile system that adapts to the evolving needs of the body in motion, reimagining the future of winter sportswear as lighter, smarter, and more user-driven.</p>
+
+                <div class="image-placeholder">项目图片区域</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
