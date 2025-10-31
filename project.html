@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Akina Tsutsumi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f4f7fb;
+            --surface: #ffffff;
+            --text: rgba(0, 0, 0, 0.82);
+            --muted: rgba(0, 0, 0, 0.55);
+            --accent: #0f4c81;
+            --border: rgba(15, 76, 129, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            background: rgba(244, 247, 251, 0.9);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            letter-spacing: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.08rem;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.35rem;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible,
+        nav a[aria-current="page"] {
+            color: var(--accent);
+        }
+
+        nav a:hover::after,
+        nav a:focus-visible::after,
+        nav a[aria-current="page"]::after {
+            transform: scaleX(1);
+        }
+
+        .hero {
+            padding: 8rem 1.5rem 5rem;
+            background: radial-gradient(circle at top left, rgba(15, 76, 129, 0.12), transparent 55%);
+        }
+
+        .hero-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            font-weight: 500;
+            letter-spacing: 0.15rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+            display: grid;
+            grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+            gap: 3rem;
+        }
+
+        aside {
+            position: sticky;
+            top: 6.5rem;
+            align-self: start;
+        }
+
+        .section-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .section-nav li a {
+            display: block;
+            padding: 0.65rem 0.75rem;
+            border-radius: 0.65rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .section-nav li a:hover,
+        .section-nav li a:focus-visible {
+            background: rgba(15, 76, 129, 0.08);
+            color: var(--accent);
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .project-block {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 30px 60px rgba(15, 76, 129, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .project-block h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            letter-spacing: 0.08rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-block h3 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.2rem;
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+        }
+
+        .project-block p + p {
+            margin-top: 1rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.08rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(15, 76, 129, 0.08);
+            color: var(--accent);
+        }
+
+        .media-placeholder {
+            margin-top: 2.5rem;
+            padding: 3rem 2rem;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.12), rgba(15, 76, 129, 0.05));
+            border: 1px dashed rgba(15, 76, 129, 0.25);
+            text-align: center;
+        }
+
+        .media-placeholder strong {
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-placeholder span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 960px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                position: static;
+            }
+
+            .section-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-nav li a {
+                padding: 0.5rem 0.85rem;
+            }
+
+            .project-block {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding-top: 6.5rem;
+            }
+
+            .project-block {
+                padding: 1.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <span class="brand">AKINA TSUTSUMI</span>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="project.html" aria-current="page">PROJECTS</a></li>
+                    <li><a href="#ma-rca">MA RCA</a></li>
+                    <li><a href="#ba-lcf">BA LCF</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>PROJECT ARCHIVE</h1>
+            <p>Selected explorations in performance wear, footwear innovation, and cross-disciplinary collaborations.
+               Each project combines technical precision with a refined fashion sensibility.</p>
+        </div>
+    </section>
+
+    <main>
+        <aside>
+            <ul class="section-nav">
+                <li><a href="#ma-rca">MA RCA</a></li>
+                <li><a href="#ma-footwear">Footwear Finalist</a></li>
+                <li><a href="#ba-lcf">BA LCF</a></li>
+                <li><a href="#iff-rca">IFF × RCA</a></li>
+                <li><a href="#grand-challenge">Grand Challenge</a></li>
+            </ul>
+        </aside>
+
+        <article>
+            <section id="ma-rca" class="project-block" aria-labelledby="ma-rca-title">
+                <h2 id="ma-rca-title">MA RCA Technical Baselayer</h2>
+                <h3>MA FASHION FOOTWEAR &amp; ACCESSORIES DESIGN</h3>
+                <p>This project introduces a new category of winter sportswear: a technical baselayer engineered for mobility,
+                   adaptability, and comfort. Designed in response to the physical demands of winter sports and the inefficiency of
+                   traditional layering, it integrates thermal regulation, sweat management, and soft-impact protection into a single,
+                   seamless knitted garment.</p>
+                <p>Advanced digital knitting technology (Shima Seiki) maps zones of breathability, compression, and structural
+                   support—each responding to the body's physiological needs during intense motion. By unifying these functions within one
+                   textile system, it reduces bulk while elevating performance for athletes and travellers alike.</p>
+                <p>A key innovation lies in customizable protective zones. Lightweight containers are strategically placed at
+                   high-impact areas such as the spine, shoulders, and elbows. Users inject a soft silicone material that cures within
+                   20 minutes, forming a personalised protective shell tailored to the wearer.</p>
+                <div class="tag-group" aria-label="Baselayer focus areas">
+                    <span class="tag">Digital Knitting</span>
+                    <span class="tag">Thermal Mapping</span>
+                    <span class="tag">Adaptive Protection</span>
+                    <span class="tag">Performance Wear</span>
+                </div>
+                <div class="media-placeholder">
+                    <strong>PORTFOLIO COMING SOON</strong>
+                    <span>Design process &amp; technical documentation will be displayed here.</span>
+                </div>
+            </section>
+
+            <section id="ma-footwear" class="project-block" aria-labelledby="ma-footwear-title">
+                <h2 id="ma-footwear-title">Shoes Project</h2>
+                <h3>CORDWAINERS FOOTWEAR AWARDS 2025 – STUART WEITZMAN AWARD FINALIST</h3>
+                <p>Building on the baselayer innovation, this footwear project extends the same philosophy of adaptable protection and
+                   user-centred design into winter sports footwear. The concept explores modular cushioning systems and anatomical fit
+                   technologies that respond to the varied demands of snow sports environments.</p>
+                <p>The design integrates lightweight materials with strategic reinforcement zones, allowing athletes to customise support
+                   levels based on discipline—whether alpine skiing, snowboarding, or backcountry exploration. Recognised as a finalist for
+                   The Stuart Weitzman Award for Best MA, the work highlights both technical fluency and aesthetic restraint.</p>
+                <div class="tag-group" aria-label="Footwear highlights">
+                    <span class="tag">Modular Cushioning</span>
+                    <span class="tag">Adaptive Fit</span>
+                    <span class="tag">Winter Sports</span>
+                </div>
+                <div class="media-placeholder">
+                    <strong>FOOTWEAR INNOVATION</strong>
+                    <span>Visual development &amp; prototype imagery in progress.</span>
+                </div>
+            </section>
+
+            <section id="ba-lcf" class="project-block" aria-labelledby="ba-lcf-title">
+                <h2 id="ba-lcf-title">BA LCF Portfolio</h2>
+                <h3>FINAL YEAR COLLECTION</h3>
+                <p>Final year collection exploring sustainable functional fashion design with a focus on technical textiles and performance wear.
+                   This body of work combines advanced garment construction with innovative material research, demonstrating a balance between
+                   precision tailoring and expressive silhouettes.</p>
+                <p>Supporting documentation charts the design development process—from early concept sketches through fabric research and
+                   construction detail. A companion look book showcases the final collection, highlighting the integration of aesthetics and
+                   functionality.</p>
+                <div class="tag-group" aria-label="BA LCF highlights">
+                    <span class="tag">Sustainable Design</span>
+                    <span class="tag">Technical Textiles</span>
+                    <span class="tag">Construction Research</span>
+                </div>
+                <div class="media-placeholder">
+                    <strong>PORTFOLIO &amp; LOOK BOOK</strong>
+                    <span>Comprehensive documentation of the final collection.</span>
+                </div>
+            </section>
+
+            <section id="iff-rca" class="project-block" aria-labelledby="iff-rca-title">
+                <h2 id="iff-rca-title">IFF × RCA Collaboration</h2>
+                <h3>SCENT &amp; NARRATIVE DESIGN</h3>
+                <p>A collaborative exploration between fashion design and olfactory experience, investigating how scent can enhance the narrative of
+                   wearable design. The project bridges sensory disciplines, creating immersive storytelling that engages both body and atmosphere.</p>
+                <p>Research examines the interplay between fragrance diffusion and garment architecture, translating scent into spatial cues that evolve as the
+                   wearer moves.</p>
+                <div class="tag-group" aria-label="IFF collaboration focus">
+                    <span class="tag">Sensory Design</span>
+                    <span class="tag">Narrative Experience</span>
+                    <span class="tag">Cross-Disciplinary</span>
+                </div>
+                <div class="media-placeholder">
+                    <strong>SCENT &amp; FASHION COLLABORATION</strong>
+                    <span>Documentation of the multi-sensory design experience.</span>
+                </div>
+            </section>
+
+            <section id="grand-challenge" class="project-block" aria-labelledby="grand-challenge-title">
+                <h2 id="grand-challenge-title">Grand Challenge Collaboration</h2>
+                <h3>MULTI-DISCIPLINARY DESIGN RESEARCH</h3>
+                <p>Addressing global challenges through collaborative design thinking. Working across disciplines to develop solutions for complex environmental
+                   and social issues, the project emphasises systems thinking, rapid prototyping, and speculative design strategies.</p>
+                <p>Outcomes include scenario planning, material experimentation, and stakeholder workshops that inform agile responses to emerging futures.</p>
+                <div class="tag-group" aria-label="Grand Challenge focus">
+                    <span class="tag">Systems Thinking</span>
+                    <span class="tag">Co-Creation</span>
+                    <span class="tag">Speculative Futures</span>
+                </div>
+                <div class="media-placeholder">
+                    <strong>COLLABORATIVE INNOVATION</strong>
+                    <span>Highlights from cross-disciplinary workshops and prototypes.</span>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        © <span id="year"></span> Akina Tsutsumi — Portfolio in development.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
